@@ -9,17 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'The Best dating app on the market';
   users: any;
-  apiUrl: string = "https://localhost:5001/api/users";
+  apiUrl: string = 'https://localhost:5001/api/users';
 
   constructor(private http: HttpClient) {}
 
 
   ngOnInit(){
     this.getUsers();
+    console.log(this.users);
   }
 
   getUsers(){
-    this.http.get(this.apiUrl).subscribe(
+    this.http.get('https://localhost:5001/api/users').subscribe(
       data => {
         this.users = data;
       },
