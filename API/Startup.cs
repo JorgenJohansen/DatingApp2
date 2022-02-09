@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using Data;
+using API.Data;
+using Extensions;
+using Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,7 +16,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Services;
 
 namespace API
 {
@@ -30,11 +36,10 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<DataContext>(options => {
-                options.UseSqlite(_config.GetConnectionString ("DefaultConnection"));
-            });
+            services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
+            services.AddIdentifyServices(_config);
 
             services.AddSwaggerGen(c =>
             {
@@ -58,7 +63,7 @@ namespace API
 
             app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
             
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

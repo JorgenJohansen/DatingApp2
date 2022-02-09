@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 //Endre til API.Data?
 //ctrl + . for å generere konstruktører og lignende
-namespace Data
+namespace API.Data
 {
     public class DataContext : DbContext
     {
