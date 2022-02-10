@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
 
-    public class AcountController : BaseApiController
+    public class AccountController : BaseApiController
     {
         private readonly DataContext _context;
 
         private readonly ITokenService _tokenService;
 
-        public AcountController(DataContext context, ITokenService tokenService)
+        public AccountController(DataContext context, ITokenService tokenService)
         {
             _tokenService = tokenService;
             _context = context;
