@@ -13,11 +13,16 @@ export class AppComponent implements OnInit {
   users: any;
   apiUrl: string = 'https://localhost:5001/api/users';
 
+
+
+
   constructor(private accountService: AccountService) {}
+
 
 
   ngOnInit(){
     this.setCurrentUser();
+
     // console.log(this.users);
   }
 
@@ -25,6 +30,8 @@ export class AppComponent implements OnInit {
     const user: User = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
+
+  
 
   
 }
