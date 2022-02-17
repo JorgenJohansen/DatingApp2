@@ -14,7 +14,7 @@ namespace Data
             if(await context.Users.AnyAsync()) return;
 
             var userData = await System.IO.File.ReadAllTextAsync("Data/UserSeedData.json");
-            var users = JsonSerializer.Deserialize<List<AppUser>>(userData);
+            var users = JsonSerializer.Deserialize<List<AppUser>>(userData, new JsonSerializerOptions{PropertyNameCaseInsensitive = true});
             foreach(var user in users)
             {
                 using var hmac = new HMACSHA512();
