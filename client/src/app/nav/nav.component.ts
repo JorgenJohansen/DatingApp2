@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
+    this.accountService.currentUser$.subscribe(user => console.log(user.photoUrl));
   }
 
   login(){
