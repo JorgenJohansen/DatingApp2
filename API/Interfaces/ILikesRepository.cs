@@ -1,5 +1,6 @@
 using DTOs;
 using Entities;
+using Helpers;
 
 namespace Interfaces
 {
@@ -9,6 +10,6 @@ namespace Interfaces
 
         Task<AppUser> GetUserWithlikes(int userId);
 
-        Task<IEnumerable<LikeDto>> GetUserLikes(string predicate, int userId);
+        Task<PagedList<LikeDto>> GetUserLikes(LikesParams likesParams);
     }
 }
