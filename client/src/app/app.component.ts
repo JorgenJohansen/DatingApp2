@@ -12,7 +12,6 @@ import { PresenceService } from './_services/presence.service';
 export class AppComponent implements OnInit {
   title = 'The Best dating app on the market';
   users: any;
-  apiUrl: string = 'https://localhost:5001/api/users';
 
 
 
